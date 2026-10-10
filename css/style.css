@@ -1,0 +1,199 @@
+/* ===== Переменные (перезаписываются из CONFIG.colors) ===== */
+:root{--bg:#0a0a0f;--surface:#12121a;--card:#1a1a24;--accent:#a855f7;--light:#c084fc;--text:#e5e5e5;--deep:#7c3aed;--pale:#d8b4fe;--glow:0 0 28px rgba(168,85,247,.35)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:17px/1.75 Inter,sans-serif;animation:fade .9s;overflow-x:hidden}
+body.out{opacity:0;transition:opacity .35s}
+@keyframes fade{from{opacity:0}}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.2}
+a{color:var(--light);text-decoration:none;transition:color .3s}a:hover{color:var(--pale)}
+hr{border:0;border-top:1px solid var(--accent);margin:20px 0 30px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px}
+.sub{font:italic 1.4rem 'Cormorant Garamond',serif;color:var(--light)}
+.ttl{font-size:clamp(2rem,6vw,3.4rem);text-align:center}
+.c{text-align:center;margin-bottom:30px}
+.sig{font:italic 1.7rem 'Cormorant Garamond',serif;color:var(--light);text-align:right}
+#bg{position:fixed;inset:0;z-index:-1;pointer-events:none}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--deep),var(--pale));z-index:99;box-shadow:var(--glow)}
+
+/* ===== Шапка, меню, подвал ===== */
+.hd{position:relative}
+.top{display:flex;justify-content:space-between;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:#888;padding:10px 0;border-bottom:1px solid #2a2a38}
+.logo{text-align:center;font:700 clamp(2rem,7vw,4rem)/1 'Playfair Display',serif;letter-spacing:.08em;padding:22px 0 14px;border-bottom:3px double var(--accent)}
+nav{display:flex;justify-content:center;flex-wrap:wrap;gap:6px 26px;padding:12px 0;border-bottom:1px solid #2a2a38;font-size:.8rem;letter-spacing:.15em;text-transform:uppercase}
+nav a{position:relative;color:#aaa}
+nav a::after{content:'';position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--accent);box-shadow:var(--glow);transform:scaleX(0);transform-origin:left;transition:transform .4s}
+nav a:hover,nav a.on{color:var(--light)}
+nav a:hover::after,nav a.on::after{transform:scaleX(1)}
+.burger{display:none;position:absolute;right:14px;top:46px;background:none;border:0;color:var(--light);font-size:1.9rem;cursor:pointer}
+footer{border-top:3px double var(--accent);text-align:center;padding:30px 20px;color:#777;font-size:.85rem}
+main{padding:40px 22px 70px}
+.pager{display:flex;justify-content:space-between;margin-top:60px;padding-top:20px;border-top:1px solid #2a2a38}
+#top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;border:1px solid var(--accent);background:var(--surface);color:var(--light);font-size:1.2rem;cursor:pointer;opacity:0;pointer-events:none;transition:.3s;z-index:90}
+#top.on{opacity:1;pointer-events:auto}#top:hover{box-shadow:var(--glow)}
+#dot{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--light);box-shadow:var(--glow);pointer-events:none;z-index:200;transform:translate(-50%,-50%)}
+
+/* ===== Появление при скролле и кнопки ===== */
+.rv{opacity:0;transform:translateY(30px);transition:opacity .9s,transform .9s}
+.rv.in{opacity:1;transform:none}
+.btn{display:inline-block;margin-top:24px;padding:14px 30px;border:1px solid var(--accent);background:none;color:var(--pale);font:500 .8rem Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;animation:pulse 2.6s infinite;transition:.3s}
+.btn:hover{background:var(--accent);color:#fff;box-shadow:var(--glow)}
+@keyframes pulse{50%{box-shadow:var(--glow)}}
+.ph{display:grid;place-items:center;min-height:200px;height:100%;background:linear-gradient(135deg,var(--card),#2a1650);color:var(--light);font-size:3rem}
+
+/* ===== Обложка ===== */
+.cover{display:grid;grid-template-columns:1.1fr 1fr;gap:44px;align-items:center;min-height:68vh}
+.cover h1{font-size:clamp(2.2rem,6vw,4rem);min-height:3.6em;margin:8px 0 18px}
+.pic{aspect-ratio:3/4;overflow:hidden;box-shadow:var(--glow);border:1px solid var(--accent)}
+.pic img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ===== Статья ===== */
+.art{max-width:720px;margin:auto}
+.art h1{font-size:clamp(2rem,5vw,3.2rem);margin:6px 0}
+.art p{margin-bottom:1.3em}
+.drop::first-letter{float:left;font:700 4.6rem/.8 'Playfair Display',serif;color:var(--accent);padding:8px 12px 0 0}
+.pq{margin:2em -40px;padding:26px 10px;border-top:1px solid var(--accent);border-bottom:1px solid var(--accent);text-align:center;font:italic 1.9rem/1.35 'Playfair Display',serif;color:var(--pale)}
+.pq small{display:block;margin-top:12px;font:.8rem Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#888}
+.pq.big{margin:40px 0;padding:40px 20px;font-size:2.1rem;transition:.4s}
+.pq.big:hover{box-shadow:var(--glow)}
+.fig{margin:2em 0}.fig img,.fig .ph{width:100%;min-height:260px;object-fit:cover;box-shadow:var(--glow)}
+figcaption{font:italic 1.05rem 'Cormorant Garamond',serif;color:#aaa;margin-top:8px;border-left:2px solid var(--accent);padding-left:10px}
+
+/* ===== Галерея ===== */
+.filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:30px}
+.filters button{background:none;border:1px solid #333;color:#aaa;padding:8px 18px;cursor:pointer;font:.85rem Inter,sans-serif;transition:.3s}
+.filters button:hover,.filters button.on{border-color:var(--accent);color:var(--pale);box-shadow:var(--glow)}
+.mas{columns:3 240px;column-gap:18px}
+.mas figure{break-inside:avoid;margin-bottom:18px;padding:8px;background:var(--card);cursor:zoom-in;transition:transform .4s,box-shadow .4s,opacity .9s}
+.mas figure:hover{transform:translateY(-6px);box-shadow:var(--glow)}
+.mas img{width:100%;display:block}
+.mas figure:nth-child(3n+1) .ph{height:340px}.mas figure:nth-child(3n+2) .ph{height:230px}
+.mas em{display:block;font:.7rem Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--accent)}
+#lb{position:fixed;inset:0;display:none;place-items:center;background:rgba(5,5,10,.96);z-index:100}
+#lb.on{display:grid}
+#lb figure{margin:0;text-align:center}#lb img{max-width:88vw;max-height:78vh;box-shadow:var(--glow)}
+#lb figcaption{border:0;margin-top:12px;color:var(--pale);font-size:1.3rem}
+#lb button{position:absolute;background:none;border:0;color:#fff;font-size:2.6rem;padding:14px;cursor:pointer}
+#lb .x{top:6px;right:10px}#lb .pv,#lb .nx{top:50%;transform:translateY(-50%)}#lb .pv{left:6px}#lb .nx{right:6px}
+
+/* ===== Хроника ===== */
+.tl{position:relative}
+.tl::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;background:linear-gradient(var(--deep),var(--pale));box-shadow:var(--glow)}
+.ev{position:relative;width:50%;padding:0 42px 52px 0;text-align:right}
+.ev:nth-child(even){margin-left:50%;padding:0 0 52px 42px;text-align:left}
+.ev::after{content:'';position:absolute;right:-7px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:var(--glow)}
+.ev:nth-child(even)::after{left:-7px;right:auto}
+.ev time{font:italic 1.4rem 'Cormorant Garamond',serif;color:var(--light)}
+.ev h3{font-size:1.5rem;margin:2px 0 8px}
+.evi{margin-top:12px}.evi img,.evi .ph{width:100%;max-height:230px;min-height:120px;object-fit:cover;box-shadow:var(--glow)}
+
+/* ===== 100 причин ===== */
+.rand{text-align:center;padding:40px 20px;margin:0 0 40px;background:var(--card);border:1px solid var(--accent);box-shadow:var(--glow)}
+#rr{font:italic 1.8rem/1.4 'Playfair Display',serif;color:var(--pale);min-height:2.8em}
+.cat h2{margin:40px 0 10px;padding-bottom:8px;border-bottom:3px double var(--accent)}
+.rs{list-style:none;padding:0;columns:2 300px;column-gap:50px}
+.rs li{break-inside:avoid;display:flex;gap:16px;padding:12px 0;border-bottom:1px solid #2a2a38}
+.rs b{min-width:46px;font:700 1.5rem 'Playfair Display',serif;color:var(--accent)}
+
+/* ===== Адаптивность ===== */
+@media(hover:none){#dot{display:none}}
+@media(max-width:760px){
+  body{font-size:19px}
+  .burger{display:block}
+  nav{display:none;flex-direction:column;align-items:center}nav.open{display:flex}
+  .cover{grid-template-columns:1fr}
+  .pq{margin:2em 0;font-size:1.6rem}.pq.big{font-size:1.7rem}
+  .mas{columns:1}
+  .tl::before{left:7px}
+  .ev,.ev:nth-child(even){width:100%;margin:0;padding:0 0 40px 34px;text-align:left}
+  .ev::after,.ev:nth-child(even)::after{left:0;right:auto}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+/* ===== Счётчик «мы вместе» (главная) ===== */
+.cnt{margin-top:22px;padding-left:16px;border-left:2px solid var(--accent)}
+#cnt{display:flex;flex-wrap:wrap;gap:6px 22px}
+#cnt span{min-width:54px;font-size:.8rem;color:#888}
+#cnt b{display:block;font:700 2.3rem/1.1 'Playfair Display',serif;color:var(--pale);text-shadow:0 0 18px rgba(168,85,247,.6);font-variant-numeric:tabular-nums}
+
+/* ===== Общие keyframes ===== */
+@keyframes rise{from{opacity:0;transform:translateY(20px)}}
+@keyframes fly{15%{opacity:1}to{opacity:0;transform:translate(var(--x),var(--y)) rotate(40deg)}}
+
+/* ===== Созвездие ===== */
+.sky{background:radial-gradient(ellipse at 50% 42%,#1d1038,#07060d 75%);border:1px solid var(--accent);box-shadow:var(--glow)}
+#sky{display:block;width:100%}
+#star{max-width:640px;min-height:9em;margin:34px auto 0;text-align:center}
+#star h3{font-size:1.9rem;color:var(--pale);margin-bottom:8px}
+#star p{font:italic 1.55rem/1.5 'Cormorant Garamond',serif}
+#star.show{animation:rise .8s}
+
+/* ================= АНИМАЦИИ ================= */
+/* Шапка и логотип */
+.hd{animation:drop 1s backwards}
+@keyframes drop{from{opacity:0;transform:translateY(-24px)}}
+.logo{background:linear-gradient(100deg,var(--text) 35%,var(--pale) 50%,var(--text) 65%);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
+@keyframes shine{from{background-position:100% 0}to{background-position:0 0}}
+
+/* Заголовки страниц: буквы «собираются» */
+.ttl{animation:track 1.4s ease backwards}
+@keyframes track{from{letter-spacing:.3em;opacity:0}}
+.sub.c{animation:rise 1s .3s backwards}
+
+/* Обложка: лесенка текста, плавающее фото, блик, мигающий курсор печати */
+.cover>div:first-child>*{animation:rise 1s calc(var(--i) * .18s + .2s) backwards}
+.pic{position:relative;animation:float 7s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+#typed::after{content:"";display:inline-block;width:3px;height:.9em;margin-left:6px;background:var(--accent);vertical-align:-.05em;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+#cnt span:last-child b{animation:pop .6s}
+@keyframes pop{from{transform:scale(1.25);color:#fff}}
+
+/* Блик на фото и кнопках */
+.pic::after,.mas figure::after,.btn::after{content:'';position:absolute;top:0;bottom:0;left:-120%;width:60%;background:linear-gradient(100deg,transparent,rgba(216,180,254,.3),transparent);transform:skewX(-20deg);pointer-events:none}
+.pic:hover::after,.mas figure:hover::after,.btn:hover::after{left:140%;transition:left .8s}
+.mas figure,.btn{position:relative;overflow:hidden}
+
+/* Разные появления */
+.mas figure.rv{transform:scale(.85) translateY(30px)}
+.ev.rv{transform:translateX(-60px)}
+.ev:nth-child(even).rv{transform:translateX(60px)}
+.rv.in,.ev.in,.ev:nth-child(even).in,.mas figure.in{transform:none}
+.mas figure.in:hover{transform:translateY(-6px)}
+@media(max-width:760px){.ev:nth-child(even).rv:not(.in){transform:translateX(-60px)}}
+.fig.rv>:first-child{clip-path:inset(0 100% 0 0);transition:clip-path 1.2s .2s}
+.fig.in>:first-child{clip-path:inset(0)}
+.filters button{animation:rise .6s calc(var(--i) * .1s) backwards}
+.filters button:hover{transform:translateY(-3px)}
+
+/* Цитаты: линии растут от центра */
+.pq,.pq.big{border:0;background:linear-gradient(var(--accent),var(--accent)) top center/0 1px no-repeat,linear-gradient(var(--accent),var(--accent)) bottom center/0 1px no-repeat;transition:opacity .9s,transform .9s,background-size 1.4s .3s,box-shadow .4s}
+.pq.in{background-size:100% 1px}
+
+/* Хроника: линия «прорастает», точки пульсируют */
+.tl::before{transform-origin:top;animation:grow 2s ease backwards}
+@keyframes grow{from{transform:scaleY(0)}}
+.ev::after{animation:ring 2.4s infinite}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(168,85,247,.6)}100%{box-shadow:0 0 0 14px rgba(168,85,247,0)}}
+
+/* Причины, подвал, «наверх» */
+.rs b{transition:transform .3s}.rs li:hover b{transform:scale(1.25) rotate(-6deg)}
+.hb{display:inline-block;color:var(--accent);animation:beat 1.4s infinite}
+@keyframes beat{0%,40%,100%{transform:scale(1)}20%{transform:scale(1.35)}60%{transform:scale(1.2)}}
+#top{transform:scale(.6)}#top.on{transform:none}#top.on:hover{animation:bob .6s infinite alternate}
+@keyframes bob{to{transform:translateY(-5px)}}
+
+/* Курсор, искры по клику, шторка между страницами */
+#dot{transition:width .25s,height .25s,background .25s}
+#dot.big{width:34px;height:34px;background:rgba(168,85,247,.25);border:1px solid var(--light)}
+.sp{position:fixed;opacity:0;font-style:normal;color:var(--pale);pointer-events:none;z-index:250;animation:fly 1s forwards}
+#wipe{position:fixed;inset:0;z-index:300;pointer-events:none;background:linear-gradient(90deg,var(--bg),var(--deep) 60%,var(--accent));transform:translateX(-101%);animation:wipeIn .9s cubic-bezier(.7,0,.2,1)}
+#wipe.go{transform:none;transition:transform .45s cubic-bezier(.7,0,.2,1);animation:none}
+@keyframes wipeIn{from{transform:none}to{transform:translateX(101%)}}
+
+/* Для тех, у кого включено «уменьшить движение» — всё показывается сразу */
+@media(prefers-reduced-motion:reduce){
+  [class~=rv]{opacity:1!important;transform:none!important}
+  .fig.rv>:first-child{clip-path:none!important}
+  .pq{background-size:100% 1px!important}
+}
